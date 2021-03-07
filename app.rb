@@ -1,9 +1,12 @@
-require 'sinatra'
-require "sinatra/reloader" if development?
-require_relative 'routes/init'
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
 
 class MyApp < Sinatra::Base
-  configure :development do
-    enable :logging, :dump_errors, :raise_errors
-  end
+  Bundler.require(environment)
+  Dotenv.load(".env.#{environment}")
+  Sequel.connect(ENV.fetch("DATABASE_URL"))
+  require_relative 'routes/init'
+  require_relative 'models/init'
+  # binding.pry
 end
