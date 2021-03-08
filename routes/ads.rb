@@ -1,8 +1,21 @@
 class MyApp < Sinatra::Base
-  get '/' do
-    "Hello index!"
+  include PaginationLinks
+
+  ADS_PER_PAGE = 4.freeze
+
+  before do
+    content_type 'application/json'
   end
 
+  # index
+  get '/' do
+    page = params.fetch("page", 1).to_i
+    ads = Ad.page(page,ADS_PER_PAGE)
+    serializer = AdSerializer.new(ads.all, links: pagination_links(ads))
+    serializer.serialized_json
+  end
+
+  # create
   post '/' do
     'Yo, u can post!'
   end
