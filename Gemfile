@@ -10,6 +10,7 @@ gem 'dotenv', '~> 2.7.6'
 gem 'bundler', '~> 2.2.12'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'rack-test', '~> 1.1.0'
   gem 'rspec', '~> 3.10.0'
   gem 'pry'

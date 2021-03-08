@@ -4,7 +4,6 @@ RSpec.describe 'Ads API' do
   describe 'GET#ads' do
     it "works fine" do
       get '/'
-      binding.pry
       expect(last_response).to be_ok
       expect(last_response.body).to eq('Hello index!')
     end
@@ -13,7 +12,6 @@ RSpec.describe 'Ads API' do
   describe 'POST#ads' do
     it "says yo" do
       post '/'
-      binding.pry
       expect(last_response).to be_ok
       expect(last_response.body).to eq('Yo, u can post!')
     end

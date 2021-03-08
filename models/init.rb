@@ -1,1 +1,1 @@
-require_relative 'ads'
+require_relative 'ad'
