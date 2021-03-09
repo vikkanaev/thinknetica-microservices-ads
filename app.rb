@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 require_relative 'routes/concerns/init'
+require_relative 'services/init'
 
 class MyApp < Sinatra::Base
   Bundler.require(environment)

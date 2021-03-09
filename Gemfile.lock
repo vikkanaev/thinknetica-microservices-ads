@@ -16,6 +16,7 @@ GEM
       sequel
     diff-lcs (1.4.4)
     dotenv (2.7.6)
+    dry-initializer (3.0.4)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     fast_jsonapi (1.5)
@@ -76,6 +77,7 @@ DEPENDENCIES
   bundler (~> 2.2.12)
   database_cleaner-sequel
   dotenv (~> 2.7.6)
+  dry-initializer (~> 3.0.3)
   factory_bot (~> 6.1.0)
   fast_jsonapi (~> 1.5)
   pg (~> 0.21.0)

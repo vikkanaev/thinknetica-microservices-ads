@@ -9,6 +9,7 @@ gem 'pg', '~> 0.21.0'
 gem 'dotenv', '~> 2.7.6'
 gem 'bundler', '~> 2.2.12'
 gem 'fast_jsonapi', '~> 1.5'
+gem 'dry-initializer', '~> 3.0.3'
 
 group :development, :test do
   gem 'awesome_print'
