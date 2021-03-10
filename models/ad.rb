@@ -3,7 +3,9 @@ class Ad < Sequel::Model
 
   def validate
     super
-    validates_presence [:title, :description, :city, :user_id]
+    [:title, :description, :city, :user_id].each do |attr|
+      validates_presence attr, message: I18n.t("models.ad.attributes.#{attr}.blank")
+    end
   end
 
   dataset_module do

@@ -81,6 +81,7 @@ DEPENDENCIES
   dry-initializer (~> 3.0.3)
   factory_bot (~> 6.1.0)
   fast_jsonapi (~> 1.5)
+  i18n (~> 1.8.9)
   pg (~> 0.21.0)
   pry
   rack-test (~> 1.1.0)

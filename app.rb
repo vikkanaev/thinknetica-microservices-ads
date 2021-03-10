@@ -16,8 +16,17 @@ class MyApp < Sinatra::Base
   require_relative 'routes/init'
   require_relative 'serializers/init'
 
+  configure do
+    I18n.load_path = ["./locales/ru.yml"]
+    I18n.default_locale = :ru
+  end
+
   configure :development do
     set :show_exceptions, false
   end
-  # binding.pry
+
+  configure :test do
+    set :show_exceptions, false
+    set :raise_errors, false
+  end
 end
