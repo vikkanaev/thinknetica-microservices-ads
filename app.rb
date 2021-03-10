@@ -1,3 +1,4 @@
+require 'active_support/all'
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
@@ -14,5 +15,9 @@ class MyApp < Sinatra::Base
 
   require_relative 'routes/init'
   require_relative 'serializers/init'
+
+  configure :development do
+    set :show_exceptions, false
+  end
   # binding.pry
 end

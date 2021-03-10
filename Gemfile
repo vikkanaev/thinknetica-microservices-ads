@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra', '~> 2.1.0'
 gem 'sinatra-contrib', '~> 2.1.0'
+gem 'activesupport', '~> 6.1.3'
 gem 'rake', '~> 13.0.3'
 gem 'sequel', '~>  5.42.0'
 gem 'pg', '~> 0.21.0'
