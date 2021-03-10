@@ -1,11 +1,11 @@
 class MyApp < Sinatra::Base
   include PaginationLinks
+  include ApiErrors
 
   ADS_PER_PAGE = 4.freeze
 
-  before do
-    content_type 'application/json'
-  end
+  before { content_type 'application/json' }
+  error { handle_exception(env['sinatra.error']) }
 
   # index
   get '/' do
@@ -17,36 +17,22 @@ class MyApp < Sinatra::Base
 
   # create
   post '/' do
-    'Yo, u can post!'
+    result = Ads::CreateService.call(ad: ad_params)
+
+    if result.success?
+      serializer = AdSerializer.new(result.ad)
+      status 201
+      body serializer.serialized_json
+    else
+      error_response(result.ad, 422)
+    end
   end
 
-end
+  private
 
-# skip_before_action :auth_user, only: %i[index]
-#
-#   def index
-#     ads = Ad.order(updated_at: :desc).page(params[:page])
-#     serializer = AdSerializer.new(ads, links: pagination_links(ads))
-#
-#     render json: serializer.serialized_json
-#   end
-#
-#   def create
-#     result = Ads::CreateService.call(
-#       ad: ad_params,
-#       user: current_user
-#     )
-#
-#     if result.success?
-#       serializer = AdSerializer.new(result.ad)
-#       render json: serializer.serialized_json, status: :created
-#     else
-#       error_response(result.ad, :unprocessable_entity)
-#     end
-#   end
-#
-#   private
-#
-#   def ad_params
-#     params.require(:ad).permit(:title, :description, :city)
-#   end
+  def ad_params
+    input = JSON.parse(request.body.read).symbolize_keys
+    hash = input[:ad].symbolize_keys.slice(:title,:description,:city, :user_id)
+    hash.merge(user_id: hash[:user_id].present? ? hash[:user_id].to_i : nil)
+  end
+end
