@@ -12,6 +12,7 @@ gem 'bundler', '~> 2.2.12'
 gem 'fast_jsonapi', '~> 1.5'
 gem 'dry-initializer', '~> 3.0.3'
 gem 'i18n', '~> 1.8.9'
+gem 'require_all', '~> 3.0.0'
 
 group :development, :test do
   gem 'awesome_print'
