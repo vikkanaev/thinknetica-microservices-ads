@@ -1,0 +1,18 @@
+ru:
+  api:
+    errors:
+      not_found: 'Запрашиваемый ресурс не найден!'
+      not_unique: 'Данный ресурс уже существует'
+      missing_parameters: 'В запросе отсутствуют необходимые параметры'
+      wrong_request: 'Неверный запрос'
+  models:
+    ad:
+      attributes:
+        title:
+          blank: 'Укажите название'
+        description:
+          blank: 'Укажите описание'
+        city:
+          blank: 'Укажите город'
+        user_id:
+          blank: 'Укажите пользователя'
