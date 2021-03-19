@@ -30,6 +30,7 @@ class MyApp < Sinatra::Base
 
   private
 
+  # TODO: Упростить. Например, парсинг тела запроса можно вынести в хэлпер.
   def ad_params
     input = JSON.parse(request.body.read).symbolize_keys
     hash = input[:ad].symbolize_keys.slice(:title,:description,:city, :user_id)
